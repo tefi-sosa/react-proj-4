@@ -42,6 +42,7 @@ module.exports = {
   addPost: async (req, res) => {
     console.log("hit addpost")
     try {
+        console.log(req.body)
         const {title, content, status, userId} = req.body
         await Post.create({title, content, privateStatus: status, userId})
         res.sendStatus(200)

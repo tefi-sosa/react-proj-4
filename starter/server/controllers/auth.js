@@ -30,6 +30,9 @@ module.exports = {
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
         const newUser = await User.create({username, hashedPass: hash})
+
+        console.log("NEW USER")
+
         const token = createToken(newUser.dataValues.username, newUser.dataValues.id)
         console.log('TOOOOOOKEN', token)
         const exp = Date.now() + 1000 * 60 * 60 * 48
