@@ -4,6 +4,8 @@ const {SECRET} = process.env
 
 module.exports = {
     isAuthenticated: (req, res, next) => {
+        console.log("AUTH")
+        
         const headerToken = req.get('Authorization')
 
         if (!headerToken) {

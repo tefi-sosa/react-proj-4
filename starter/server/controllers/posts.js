@@ -52,13 +52,30 @@ module.exports = {
     }
   },
 
-  editPost: (req, res) => {
+  editPost: async (req, res) => {
+    try {
+        const {id} = req.params
+        const {status} = req.body
+        await Post.update({privateStatus: status}, {
+            where: {id: +id}
+        })
+        res.sendStatus(200)
+    } catch (error) {
+        console.log('ERROR IN getCurrentUserPosts')
+        console.log(error)
+        res.sendStatus(400)
+    }
+},
 
-
-      console.log('edit post')
-  },
-
-  deletePost: (req, res) => {
-      console.log('delete post')
-  }
+    deletePost: async (req, res) => {
+        try {
+            const {id} = req.params
+            await Post.destroy({where: {id: +id}})
+            res.sendStatus(200)
+        } catch (error) {
+            console.log('ERROR IN getCurrentUserPosts')
+            console.log(error)
+            res.sendStatus(400)
+        }
+    }
 }
