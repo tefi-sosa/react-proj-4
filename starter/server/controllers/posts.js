@@ -62,7 +62,7 @@ module.exports = {
         })
         res.sendStatus(200)
     } catch (error) {
-        console.log('ERROR IN getCurrentUserPosts')
+        console.log('ERROR IN editUser')
         console.log(error)
         res.sendStatus(400)
     }
@@ -74,7 +74,7 @@ module.exports = {
             await Post.destroy({where: {id: +id}})
             res.sendStatus(200)
         } catch (error) {
-            console.log('ERROR IN getCurrentUserPosts')
+            console.log('ERROR IN deletePost')
             console.log(error)
             res.sendStatus(400)
         }
